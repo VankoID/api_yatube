@@ -3,8 +3,22 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+from rest_framework import routers
+from rest_framework.authtoken import views
+
+from api.views import PostViewSet, GroupViewSet, CommentViewSet, UserViewSet
+
+router = routers.DefaultRouter()
+
+router.register(r'api/v1/posts', PostViewSet, basename='post')
+router.register(r'api/v1/groups', GroupViewSet, basename='group')
+router.register(r'api/v1/posts/(?P<post_id>\d+)/comments', CommentViewSet, basename='comment')
+router.register(r'api/v1/users', UserViewSet, basename='user')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('api/v1/api-token-auth/', views.obtain_auth_token),
 ]
 
 
