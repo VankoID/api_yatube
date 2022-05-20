@@ -6,7 +6,9 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 
 from posts.models import Post, Group, Comment, User
-from api.serializers import PostSerializer, GroupSerializer, CommentSerializer, UserSerializer
+from api.serializers import (
+    PostSerializer, GroupSerializer, CommentSerializer, UserSerializer
+)
 
 
 class PostViewSet(viewsets.ModelViewSet):

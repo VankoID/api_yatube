@@ -12,7 +12,9 @@ router = routers.DefaultRouter()
 
 router.register(r'api/v1/posts', PostViewSet, basename='post')
 router.register(r'api/v1/groups', GroupViewSet, basename='group')
-router.register(r'api/v1/posts/(?P<post_id>\d+)/comments', CommentViewSet, basename='comment')
+router.register(
+    r'api/v1/posts/(?P<post_id>\d+)/comments', CommentViewSet, basename='comment'
+)
 router.register(r'api/v1/users', UserViewSet, basename='user')
 
 urlpatterns = [
